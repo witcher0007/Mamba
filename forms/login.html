@@ -171,137 +171,31 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
 <script  src="../script.js"></script>
 
-<!-- <script>
-    var form=document.getElementById('Register-form');
-    var form=document.getElementById('login-form');
-    form.addEventListener("submit", e => {
+<script>
+    var registerForm = document.getElementById('Register-form');
+    var loginForm = document.getElementById('login-form');
+
+    registerForm.addEventListener("submit", e => {
         e.preventDefault();
-        fetch(form.action,{
-            method : "POST",
-            body: new FormData(document.getElementById("Register-form")),
-        }).then(
-            response = response.json()
-        ).then((html)=>{
+        fetch(registerForm.action, {
+            method: "POST",
+            body: new FormData(registerForm),
+        }).then(response => response.json())
+        .then((html) => {
+            window.open('login.html', "_blank");
+        });
+    });
+
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault();
+        fetch(loginForm.action, {
+            method: "POST",
+            body: new FormData(loginForm),
+        }).then(response => response.json())
+        .then((html) => {
             window.open('../index.html', "_blank");
         });
     });
-
-    form.addEventListener("submit", e => {
-        e.preventDefault();
-        fetch(form.action,{
-            method : "GET",
-            body: new FormData(document.getElementById("login-form")),
-        }).then(
-            response = response.json()
-        ).then((html)=>{
-            window.open('./index.html', "_blank");
-        });
-    });
-
-
-</script> -->
-
-<script>
-    var registerForm = document.getElementById('Register-form');
-    registerForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-        
-        // Fetch form data
-        var formData = new FormData(registerForm);
-
-        // Make POST request to server
-        fetch(registerForm.action, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // For debugging
-            if (data.success === true) {
-                alert("Registered successfully!");
-                window.open('../index.html', "_blank");
-            } else {
-                alert("Registration failed. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("An error occurred. Please try again later.");
-        });
-    });
-
-    var loginForm = document.getElementById('login-form');
-    loginForm.addEventListener("submit", function(e) {
-        e.preventDefault();
-        
-        // Fetch form data
-        var formData = new FormData(loginForm);
-
-        // Make POST request to server
-        fetch(loginForm.action, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // For debugging
-            if (data.success === true) {
-                alert("Login successful!");
-                window.open('../index.html', "_blank");
-            } else {
-                alert("Login failed. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("An error occurred. Please try again later.");
-        });
-    });
 </script>
-
-<!-- <script>
-    var form = document.getElementById('Register-form');
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        
-        // Fetch form data
-        var formData = new FormData(form);
-
-        // Make POST request to server
-        fetch(form.action, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data); // For debugging
-            if (data.success === true) {
-                alert("Registered successfully!");
-            } else {
-                alert("Registration failed. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert("An error occurred. Please try again later.");
-        });
-    });
-</script> -->
-
 </body>
 </html>
